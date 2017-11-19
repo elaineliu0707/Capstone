@@ -1,0 +1,1 @@
+درس كيفية عمل اطار زجاجي اولا نفتح الصورة ننسخها ثم نعمل filtre -- atténuation-- flou gaussien : 6 filter -- blur -- gaussian blur : 6 ثم ولا تنسونا من صالح دعائكم
