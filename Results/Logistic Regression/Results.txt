@@ -5,4 +5,127 @@ Group Hezbollah, Accuracy: 0.9970501474926253
 0 class (2.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
 1 class (676.0/676.0/678.0): Precision=1.0,Recall=0.9970501474926253,F1-Measure=0.9985228951255538
 
+2017-11-19T00:24:34.036
 
+Group Hezbollah, Accuracy: 0.9970501474926253
+0 class (2.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+1 class (676.0/676.0/678.0): Precision=1.0,Recall=0.9970501474926253,F1-Measure=0.9985228951255538
+
+2017-11-19T00:43:48.085
+
+Group Hamas, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (2181.0/2181.0/2181.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+
+2017-11-19T01:06:23.514
+
+Group Aljazeera, Accuracy: 0.12903225806451613
+0 class (4.0/4.0/31.0): Precision=1.0,Recall=0.12903225806451613,F1-Measure=0.2285714285714286
+1 class (27.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T01:29:51.462
+
+Group CNN, Accuracy: 0.0
+0 class (0.0/0.0/25.0): Precision=NaN,Recall=0.0,F1-Measure=NaN
+1 class (25.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T01:53:13.086
+
+Group Mohamed Rateb Al-Nabulsi, Accuracy: 0.0
+0 class (0.0/0.0/30.0): Precision=NaN,Recall=0.0,F1-Measure=NaN
+1 class (30.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T02:16:27.191
+
+Group Movement of Society for Peace, Accuracy: 0.14893617021276595
+0 class (7.0/7.0/47.0): Precision=1.0,Recall=0.14893617021276595,F1-Measure=0.25925925925925924
+1 class (40.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T02:39:47.537
+
+Group Tunisian General Union of Labor, Accuracy: 0.4117647058823529
+0 class (28.0/28.0/68.0): Precision=1.0,Recall=0.4117647058823529,F1-Measure=0.5833333333333334
+1 class (40.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T03:01:14.858
+
+Group Rabee al-Madkhali, Accuracy: 0.0
+0 class (0.0/0.0/134.0): Precision=NaN,Recall=0.0,F1-Measure=NaN
+1 class (134.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T03:23:44.466
+
+Group Socialist Union Morocco, Accuracy: 0.1597444089456869
+0 class (50.0/50.0/313.0): Precision=1.0,Recall=0.1597444089456869,F1-Measure=0.2754820936639118
+1 class (263.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T03:42:47.102
+
+Group Salman Fahd Al-Ohda, Accuracy: 0.0
+0 class (0.0/0.0/663.0): Precision=NaN,Recall=0.0,F1-Measure=NaN
+1 class (663.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T03:59:05.534
+
+Group Alarabiya, Accuracy: 0.04286447638603696
+0 class (167.0/167.0/3896.0): Precision=1.0,Recall=0.04286447638603696,F1-Measure=0.08220526704405612
+1 class (3729.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T04:19:17.768
+
+Group GA on Islamic Affairs, Accuracy: 0.009358288770053475
+0 class (21.0/21.0/2244.0): Precision=1.0,Recall=0.009358288770053475,F1-Measure=0.018543046357615892
+1 class (2223.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+
+2017-11-19T04:42:41.869
+
+Group Al Shabaab, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (28.0/28.0/28.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+
+2017-11-19T05:02:22.371
+
+Group Ansar Al Sharia, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (45.0/45.0/45.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+
+2017-11-19T05:26:13.413
+
+Group AQIM, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (6.0/6.0/6.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+
+2017-11-19T05:49:17.474
+
+Group Azawad, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (6.0/6.0/6.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+
+2017-11-19T06:09:46.878
+
+Group ISIS, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (55.0/55.0/55.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+2017-11-19T06:32:37.616
+
+Group Syrian Democratic Forces, Accuracy: 0.813953488372093
+0 class (32.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+1 class (140.0/140.0/172.0): Precision=1.0,Recall=0.813953488372093,F1-Measure=0.8974358974358974
+
+2017-11-19T06:55:17.820
+
+Group Houthis, Accuracy: 0.9894736842105263
+0 class (3.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+1 class (282.0/282.0/285.0): Precision=1.0,Recall=0.9894736842105263,F1-Measure=0.9947089947089947
+
+2017-11-19T07:14:27.226
+
+Group Hamas, Accuracy: 1.0
+0 class (0.0/0.0/0.0): Precision=NaN,Recall=NaN,F1-Measure=NaN
+1 class (2181.0/2181.0/2181.0): Precision=1.0,Recall=1.0,F1-Measure=1.0
+
+2017-11-19T07:19:44.532
+
+Group Al Boraq, Accuracy: 0.35850047662587786
+0 class (32975.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+1 class (18428.0/18428.0/51403.0): Precision=1.0,Recall=0.35850047662587786,F1-Measure=0.5277885179934413
