@@ -1,3 +1,20 @@
-sermons,0
-hezbollah,1
-houthis,1
+Aljazeera,0
+CNN,0
+Mohamed Rateb Al-Nabulsi,0
+Movement of Society for Peace,0
+Tunisian General Union of Labor,0
+Rabee al-Madkhali,0
+Socialist Union Morocco,0
+Salman Fahd Al-Ohda,0
+Alarabiya,0
+GA on Islamic Affairs,0
+Al Shabaab,1
+Ansar Al Sharia,1
+AQIM,1
+Azawad,1
+ISIS,1
+Syrian Democratic Forces,1
+Houthis,1
+Hezbollah,1
+Hamas,1
+Al Boraq,1
