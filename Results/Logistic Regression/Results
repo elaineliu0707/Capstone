@@ -1,0 +1,8 @@
+11/18/17
+
+2017/11/18 23:38:36 Test Classifier:
+Group Hezbollah, Accuracy: 0.9970501474926253
+0 class (2.0/0.0/0.0): Precision=0.0,Recall=NaN,F1-Measure=NaN
+1 class (676.0/676.0/678.0): Precision=1.0,Recall=0.9970501474926253,F1-Measure=0.9985228951255538
+
+
