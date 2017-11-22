@@ -1,0 +1,1 @@
+https://github.com/hadyelsahar/large-arabic-sentiment-analysis-resouces/tree/master/datasets
