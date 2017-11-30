@@ -1,0 +1,48 @@
+Data:
+
+Groups: 20 (10 Violent, 10 non-Violent)
+Documents: 
+Initial:
+Al-Boraq: 49,913
+Other Violent groups: 3,456
+All non-Violent groups: 7,429
+
+Final:
+14,858 (50% of each class label) including a random sample of 3,973 files from Al-Boraq.
+
+Evaluation Metrics:
+Accuracy = # Correct Classifications / # Documents
+
+Label: Positive, Negative
+Label F1-Measure = (2 * Label Precision * Label Recall) / (Label Precision + Label Recall)
+Label Precision = # Correct Label Classifications / # Label Classifications
+Label Recall = # Correct Label Classifications / # Label Documents
+
+Models: 
+Logistic Regression with TF-IDF unigram+bigram features
+Convolutional Neural Network with word2vec embeddings (tuned for English documents).
+
+Cross Validation:
+
+Logistic Regression:
+Accuracy: 0.989564
+0 class: F1-Measure=0.989576 
+1 class: F1-Measure=0.989541 
+                             
+CNN:                         
+Accuracy:0.988221            
+0 class: F1-Measure=0.988248 
+1 class: F1-Measure=0.988178 
+
+Leave-one-group-out Cross Validation:
+
+Logistic Regression:
+Accuracy: 0.594547
+0 class: F1-Measure=0.439245
+1 class: F1-Measure=0.919709
+                             
+CNN:                         
+Accuracy:0.654487        
+0 class: F1-Measure=0.565288
+1 class: F1-Measure=0.925812  
+
