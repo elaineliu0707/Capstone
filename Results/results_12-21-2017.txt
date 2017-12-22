@@ -1,0 +1,78 @@
+
+Leave-one-group-out Cross Validation:
+
+Logistic Regression:
+Accuracy: 0.594547
+0 class: F1-Measure=0.439245
+1 class: F1-Measure=0.919709
+
+Low Performers:
+group                           isViolent  Accuracy  F1-Measure
+Alarabiya                           NO      0.2120     0.3498
+Aljazeera                           NO      0.4516     0.6222
+CNN                                 NO      0.1250     0.2222
+GA-on-Islamic-Affairs               NO      0.1344     0.2370
+Mohamed-Rateb-Al-Nabulsi            NO      0.4666     0.6363
+Movement-of-Society-for-Peace       NO      0.3829     0.5538
+Rabee-al-Madkhali                   NO      0.1417     0.2483
+Salman-Fahd-Al-Ohda                 NO      0.0437     0.0838
+Socialist-Union-Morocco             NO      0.4006     0.5720
+Al-Boraq                           YES      0.3838     0.5547
+
+                  
+CNN:                         
+Accuracy:0.654487        
+0 class: F1-Measure=0.565288
+1 class: F1-Measure=0.925812  
+
+Low Performers:
+Group                       IsViolent    Accuracy    F1-Measure
+GA-on-Islamic-Affairs           NO        0.0899        0.1650
+Alarabiya                       NO        0.2726        0.4284
+Aljazeera                       NO        0.4516        0.6222
+CNN                             NO        0.2500        0.4000
+Salman-Fahd-Al-Ohda             NO        0.4012        0.5727
+Rabee-al-Madkhali               NO        0.1791        0.3038
+Socialist-Union-Morocco         NO        0.4904        0.6581
+
+Bidirectional LSTM: 
+Accuracy:0.6745397
+0 class: F1-Measure=0.611189
+1 class: F1-Measure=0.9362746
+
+
+Low Performers:
+Group                        IsViolent        Accuracy            F1-Measure
+GA-on-Islamic-Affairs            NO            0.2230                0.3647
+Rabee-al-Madkhali                NO            0.4851                0.6533
+Salman-Fahd-Al-Ohda              NO            0.3876                0.5587
+Alarabiya                        NO            0.1255                0.2230
+
+
+---- after data augmentation ----
+
+CNN:                         
+Accuracy:0.7027        
+0 class: F1-Measure=0.7268478
+1 class: F1-Measure=0.8565867 
+
+Low Performers:
+Group                     IsViolent        Accuracy          F1-Measure
+Rabee-al-Madkhali            NO             0.2537              0.4048
+Syrian-Democratic-Forces    YES             0.2733              0.4292
+Alarabiya                    NO             0.1450              0.2533
+Al-Boraq                    YES             0.4375              0.6086
+GA-on-Islamic-Affairs        NO             0.4290              0.6004
+
+Bidirectional LSTM: 
+Accuracy:0.7017
+0 class: F1-Measure=0.6795847
+1 class: F1-Measure=0.9032512
+
+
+Low Performers:
+Group                            IsViolent        Accuracy            F1-Measure
+Rabee-al-Madkhali                    NO             0.1642              0.2821
+Alarabiya                            NO             0.1345              0.2371
+Movement-of-Society-for-Peace        NO             0.3830              0.5538
+GA-on-Islamic-Affairs                NO             0.4245              0.5960
