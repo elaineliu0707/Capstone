@@ -1,4 +1,8 @@
 Alboraq.txt
 README-ALBORAQ.txt
 dark_web_forum.R
-Models/LR_Arabic/
+Models/Ben_LR_Arabic/.settings
+Models/Ben_LR_Arabic/data
+Models/Ben_LR_Arabic/bin
+Models/Ben_LR_Arabic/.classpath
+Models/Ben_LR_Arabic/.project
