@@ -71,12 +71,12 @@ public class DocAnalyzer   {
 				"Hamas",
 				"Al Boraq"	
 		};
-		String group_labels = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs-labels (full).txt";
-		String docs = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs (full)";
+		String doc_labels = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-doc-labels (test).txt";
+		String docs = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs (test)\\";
 		DocAnalyzer docAnalyzer=new DocAnalyzer(3,true);  
-		for(String group : groups) {
-			docAnalyzer.RunAnalyzerOnOneGroup(docs, group_labels, new String[]{}, group);
-		}
+		//for(String group : groups) {
+			docAnalyzer.RunAnalyzerOnOneGroup(docs, doc_labels, new String[]{}, "Hezbollah");
+		//}
 	   
 	  } 
   
@@ -706,7 +706,7 @@ public class DocAnalyzer   {
 		int index=0;
 		while (iterator.hasNext()&&index++<NumberOfFeaturesToKeep) {
 			String feature=iterator.next();
-			if(method==FeatureSelectionMethod.InformationGain||(method==FeatureSelectionMethod.ChiSquare&&sortedMap.get(feature)>3.841)) // filter out insignificant terms for chiSquare
+			//if(method==FeatureSelectionMethod.InformationGain||(method==FeatureSelectionMethod.ChiSquare&&sortedMap.get(feature)>3.841)) // filter out insignificant terms for chiSquare
 				FeaturesToKeep.add(feature);
 		}
 		return FeaturesToKeep;
@@ -998,26 +998,63 @@ public class DocAnalyzer   {
 						trainingFiles.add(file);
 				}
 			}
-			// init
+			/**
+			 *  init
+			 */
 			init();
 
-			// build vocab
+			/**
+			 *  build vocab
+			 */
 			BuildVocab(trainingFiles, labels);
-			// select features
-			ConstructFeatures(10000);
+			
+			/**
+			 *  select features
+			 */
+			ConstructFeatures(100);
 
 
-			// train or load classification model
+			/**
+			 *  train or load classification model
+			 */
 			LogisticRegressionClassifier Classifier=null; 
 			
-			// build VSM for testing files
+			/**
+			 *  build VSM for testing files
+			 */
 			BuildVectorSpaceModel(testingFiles, labels, false);
-	//		if(testingDocuments.size()==0)
-		//		return;
+	        if(testingDocuments.size()==0)
+	    	   return;
 
-			// build VSM for training files
+			/**
+			 *  build VSM for training files
+			 */
 			BuildVectorSpaceModel(trainingFiles, labels, true);
 
+			/**
+			 *  Export features
+			 */
+			
+			// Hold the coordinates
+			ArrayList<Integer> rows = new ArrayList<Integer>();
+			ArrayList<Integer> cols = new ArrayList<Integer>();
+			ArrayList<Double> values = new ArrayList<Double>();
+			ArrayList<Integer> docLabels = new ArrayList<Integer>();
+			
+			// Make a directory for the current group
+			String groupDir = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\exported-features\\" + targetGroup;
+			File file = new File(groupDir);
+			file.mkdir();
+			for(int i = 0; i < trainingDocuments.size(); i++) {
+				Document temp = trainingDocuments.get(i);
+				docLabels.add((int)temp.getLabel());
+				for(String word : temp.m_VSM.keySet()) {
+					cols.add(m_Vocabs.get(word).getID());
+					rows.add(i);
+					values.add(temp.m_VSM.get(word));
+				}
+			}
+			
 			// Train and save classifier
 			Classifier=BuildClassifier(NumberOfProcessors);
 			Classifier.saveTopFeatures("topfeatures.csv");
