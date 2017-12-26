@@ -48,8 +48,35 @@ import edu.stanford.nlp.process.TokenizerFactory;
 public class DocAnalyzer   {
 	public static void main(String[] args) { 
 		
-		DocAnalyzer docAnalyzer=new DocAnalyzer(8,true);  
-		 docAnalyzer.RunAnalyzerOnOneGroup( "C:\\Users\\Mohammad\\Desktop\\arabic-docs", "C:\\Users\\Mohammad\\Desktop\\arabic-docs-labels.txt" ,new String[]{},"hezbollah");
+		// List of group names
+		String[] groups = {
+				"Aljazeera",
+				"CNN",
+				"Mohamed Rateb Al-Nabulsi",
+				"Movement of Society for Peace",
+				"Tunisian General Union of Labor",
+				"Rabee al-Madkhali",
+				"Socialist Union Morocco",
+				"Salman Fahd Al-Ohda",
+				"Alarabiya",
+				"GA on Islamic Affairs",
+				"Al Shabaab",
+				"Ansar Al Sharia",
+				"AQIM",
+				"Azawad",
+				"ISIS",
+				"Syrian Democratic Forces",
+				"Houthis",
+				"Hezbollah",
+				"Hamas",
+				"Al Boraq"	
+		};
+		String group_labels = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs-labels (full).txt";
+		String docs = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs (full)";
+		DocAnalyzer docAnalyzer=new DocAnalyzer(3,true);  
+		for(String group : groups) {
+			docAnalyzer.RunAnalyzerOnOneGroup(docs, group_labels, new String[]{}, group);
+		}
 	   
 	  } 
   
@@ -985,8 +1012,8 @@ public class DocAnalyzer   {
 			
 			// build VSM for testing files
 			BuildVectorSpaceModel(testingFiles, labels, false);
-			if(testingDocuments.size()==0)
-				return;
+	//		if(testingDocuments.size()==0)
+		//		return;
 
 			// build VSM for training files
 			BuildVectorSpaceModel(trainingFiles, labels, true);

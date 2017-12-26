@@ -1,0 +1,20 @@
+Al Boraq-g-1,1
+Al Shabaab-g-1,1
+Alarabiya-g-1,0
+Aljazeera-g-1d-2017-10-11,0
+Ansar Al Sharia-g-1,1
+AQIM-g-1,1
+Azawad-g-1,1
+CNN-g-2d-2017-10-15,0
+GA on Islamic Affairs-g-1d23-10-2007,0
+Hamas-g-1d1990-01-08,1
+Hezbollah-g-1d2017-11-17,1
+Houthis-g-1d2015-08-18,1
+ISIS-g-1,1
+Mohamed Rateb Al-Nabulsi-g-160d2012-01-20,0
+Movement of Society for Peace-g-0,0
+Rabee al-Madkhali-g-170,0
+Salman Fahd Al-Ohda-g-0,0
+Socialist Union Morocco-g-0d2017-11-02,0
+Syrian Democratic Forces-g-1,1
+Tunisian General Union of Labor-g-0,0
