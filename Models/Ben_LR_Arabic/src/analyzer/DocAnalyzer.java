@@ -75,7 +75,7 @@ public class DocAnalyzer   {
 				"Houthis",
 				"Hezbollah",
 				"Hamas",
-				"Al Boraq"	
+				"Al-Boraq"	
 		};
 		String doc_labels = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-doc-labels.txt";
 		String docs = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs\\";
@@ -1041,130 +1041,117 @@ public class DocAnalyzer   {
 			 *  Export features
 			 */
 			
-			// First for the training
-			
-			// Hold the coordinates
-			ArrayList<Integer> rows = new ArrayList<Integer>();
-			ArrayList<Integer> cols = new ArrayList<Integer>();
-			ArrayList<Double> values = new ArrayList<Double>();
-			ArrayList<Integer> docLabels = new ArrayList<Integer>();
-			
 			// Make a directory for the current group
 			String groupDir = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\exported-features\\" + targetGroup + "\\";
 			File file = new File(groupDir);
 			file.mkdir();
-			for(int i = 0; i < trainingDocuments.size(); i++) {
-				Document temp = trainingDocuments.get(i);
-				docLabels.add((int)temp.getLabel());
-				for(String word : temp.m_VSM.keySet()) {
-					cols.add(m_Vocabs.get(word).getID());
-					rows.add(i);
-					values.add(temp.m_VSM.get(word));
+			
+			System.out.println("Beggining to export features for " + targetGroup);
+			
+			Thread train = new Thread() {
+				public void run() {
+					// First for the training
+					
+					// Hold the coordinates
+					ArrayList<String> rows = new ArrayList<String>();
+					ArrayList<String> cols = new ArrayList<String>();
+					ArrayList<String> values = new ArrayList<String>();
+					ArrayList<String> docLabels = new ArrayList<String>();
+					
+					System.out.println("Building Arrays");
+					for(int i = 0; i < trainingDocuments.size(); i++) {
+						Document temp = trainingDocuments.get(i);
+						docLabels.add(temp.getLabel() + "");
+						for(String word : temp.m_VSM.keySet()) {
+							cols.add(m_Vocabs.get(word).getID() + "");
+							rows.add(i + "");
+							values.add(temp.m_VSM.get(word) + "");
+						}
+					}
+					
+					// Create the necessary strings
+					System.out.println("Create strings and write");
+					String rowBuilder = String.join(", ", rows);
+					String colBuilder = String.join(", ", cols);
+					String valBuilder = String.join(", ", values);
+					String labelBuilder = String.join(", ", docLabels);
+				
+					// Write the train features
+					String newFilePath = groupDir + targetGroup + "TrainFeatures.txt";
+					try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+				              new FileOutputStream(newFilePath), "utf-8"))) {
+								writer.write(rowBuilder + "\n");
+								writer.write(colBuilder + "\n");
+								writer.write(valBuilder + "\n");		
+				   } catch(IOException e) {
+					   System.out.println(e.getMessage());
+				   }
+					
+					newFilePath = groupDir + targetGroup + "TrainLabels.txt";
+					try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+				              new FileOutputStream(newFilePath), "utf-8"))) {
+							  writer.write(labelBuilder);		
+				   } catch(IOException e) {
+					   System.out.println(e.getMessage());
+				   }
+					
 				}
-			}
+			};
 			
-			// Create the necessary strings
-			String rowBuilder = "";
-			for(int rowVal : rows) {
-				rowBuilder += rowVal + " ";
-			}
-			String colBuilder = "";
-			for(int colVal : cols) {
-				colBuilder += colVal + " ";
-			}
-			
-			String valBuilder = "";
-			for(double valVal : values) {
-				valBuilder += valVal + " ";
-			}
-			
-			String labelBuilder = "";
-			for(int lab : docLabels) {
-				labelBuilder += lab + " ";
-			}
-			System.out.println(colBuilder.toString());
-			
-			// Write the train features
-			String newFilePath = groupDir + targetGroup + "TrainFeatures.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			
-			newFilePath = groupDir + targetGroup + "TrainLabels.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			
-			
-			
-			// Now the testing set
-			// Hold the coordinates
-			rows = new ArrayList<Integer>();
-			cols = new ArrayList<Integer>();
-			values = new ArrayList<Double>();
-			docLabels = new ArrayList<Integer>();
-			
-			for(int i = 0; i < testingDocuments.size(); i++) {
-				Document temp = testingDocuments.get(i);
-				docLabels.add((int)temp.getLabel());
-				for(String word : temp.m_VSM.keySet()) {
-					cols.add(m_Vocabs.get(word).getID());
-					rows.add(i);
-					values.add(temp.m_VSM.get(word));
+			Thread test = new Thread() {
+				public void run() {
+					// First for the training
+					
+					// Hold the coordinates
+					ArrayList<String> rows = new ArrayList<String>();
+					ArrayList<String> cols = new ArrayList<String>();
+					ArrayList<String> values = new ArrayList<String>();
+					ArrayList<String> docLabels = new ArrayList<String>();
+					
+					for(int i = 0; i < testingDocuments.size(); i++) {
+						Document temp = testingDocuments.get(i);
+						docLabels.add(temp.getLabel() + "");
+						for(String word : temp.m_VSM.keySet()) {
+							cols.add(m_Vocabs.get(word).getID() + "");
+							rows.add(i + "");
+							values.add(temp.m_VSM.get(word) + "");
+						}
+					}
+					
+					// Create the necessary strings
+					String rowBuilder = String.join(", ", rows);
+					String colBuilder = String.join(", ", cols);
+					String valBuilder = String.join(", ", values);
+					String labelBuilder = String.join(", ", docLabels);
+					
+					// Write the train features
+					String newFilePath = groupDir + targetGroup + "TestFeatures.txt";
+					try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+				              new FileOutputStream(newFilePath), "utf-8"))) {
+								writer.write(rowBuilder + "\n");
+								writer.write(colBuilder + "\n");
+								writer.write(valBuilder + "\n");		
+				   } catch(IOException e) {
+					   System.out.println(e.getMessage());
+				   }
+					
+					newFilePath = groupDir + targetGroup + "TestLabels.txt";
+					try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+				              new FileOutputStream(newFilePath), "utf-8"))) {
+								writer.write(labelBuilder);		
+				   } catch(IOException e) {
+					   System.out.println(e.getMessage());
+				   }
+					
 				}
-			}
+	
+			};
 			
-			// Create the necessary strings
-			rowBuilder = "";
-			for(int rowVal : rows) {
-				rowBuilder += rowVal + " ";
-			}
-			colBuilder = "";
-			for(int colVal : cols) {
-				colBuilder += colVal + " ";
-			}
+			test.run();
+			train.run();
 			
-			valBuilder = "";
-			for(double valVal : values) {
-				valBuilder += valVal + " ";
-			}
 			
-			labelBuilder = "";
-			for(int lab : docLabels) {
-				labelBuilder += lab + " ";
-			}
-			System.out.println(colBuilder.toString());
-			
-			// Write the test features
-			newFilePath = groupDir + targetGroup + "TestFeatures.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			
-			newFilePath = groupDir + targetGroup + "TestLabels.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
+			System.out.println("Done!");
 			/**
 			 *  Train and save classifier
 			 */
