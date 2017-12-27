@@ -9,15 +9,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStreamReader;  
 import java.text.DateFormat;
 import java.text.SimpleDateFormat; 
 import java.util.Arrays;
@@ -54,35 +48,8 @@ import edu.stanford.nlp.process.TokenizerFactory;
 public class DocAnalyzer   {
 	public static void main(String[] args) { 
 		
-		// List of group names
-		String[] groups = {
-				"Aljazeera",
-				"CNN",
-				"Mohamed Rateb Al-Nabulsi",
-				"Movement of Society for Peace",
-				"Tunisian General Union of Labor",
-				"Rabee al-Madkhali",
-				"Socialist Union Morocco",
-				"Salman Fahd Al-Ohda",
-				"Alarabiya",
-				"GA on Islamic Affairs",
-				"Al Shabaab",
-				"Ansar Al Sharia",
-				"AQIM",
-				"Azawad",
-				"ISIS",
-				"Syrian Democratic Forces",
-				"Houthis",
-				"Hezbollah",
-				"Hamas",
-				"Al Boraq"	
-		};
-		String doc_labels = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-doc-labels.txt";
-		String docs = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\arabic-docs\\";
-		DocAnalyzer docAnalyzer=new DocAnalyzer(4,true);  
-		for(String group : groups) {
-			docAnalyzer.RunAnalyzerOnOneGroup(docs, doc_labels, new String[]{}, group);
-		}
+		DocAnalyzer docAnalyzer=new DocAnalyzer(8,true);  
+		 docAnalyzer.RunAnalyzerOnOneGroup( "C:\\Users\\Mohammad\\Desktop\\arabic-docs", "C:\\Users\\Mohammad\\Desktop\\arabic-docs-labels.txt" ,new String[]{},"hezbollah");
 	   
 	  } 
   
@@ -1004,181 +971,38 @@ public class DocAnalyzer   {
 						trainingFiles.add(file);
 				}
 			}
-			/**
-			 *  init
-			 */
+			// init
 			init();
 
-			/**
-			 *  build vocab
-			 */
+			// build vocab
 			BuildVocab(trainingFiles, labels);
-			
-			/**
-			 *  select features
-			 */
+			// select features
 			ConstructFeatures(10000);
 
 
-			/**
-			 *  train or load classification model
-			 */
+			// train or load classification model
 			LogisticRegressionClassifier Classifier=null; 
 			
-			/**
-			 *  build VSM for testing files
-			 */
+			// build VSM for testing files
 			BuildVectorSpaceModel(testingFiles, labels, false);
-	        if(testingDocuments.size()==0)
-	    	   return;
+			if(testingDocuments.size()==0)
+				return;
 
-			/**
-			 *  build VSM for training files
-			 */
+			// build VSM for training files
 			BuildVectorSpaceModel(trainingFiles, labels, true);
 
-			/**
-			 *  Export features
-			 */
-			
-			// First for the training
-			
-			// Hold the coordinates
-			ArrayList<Integer> rows = new ArrayList<Integer>();
-			ArrayList<Integer> cols = new ArrayList<Integer>();
-			ArrayList<Double> values = new ArrayList<Double>();
-			ArrayList<Integer> docLabels = new ArrayList<Integer>();
-			
-			// Make a directory for the current group
-			String groupDir = "C:\\Users\\Ben\\Documents\\Capstone\\Models\\exported-features\\" + targetGroup + "\\";
-			File file = new File(groupDir);
-			file.mkdir();
-			for(int i = 0; i < trainingDocuments.size(); i++) {
-				Document temp = trainingDocuments.get(i);
-				docLabels.add((int)temp.getLabel());
-				for(String word : temp.m_VSM.keySet()) {
-					cols.add(m_Vocabs.get(word).getID());
-					rows.add(i);
-					values.add(temp.m_VSM.get(word));
-				}
-			}
-			
-			// Create the necessary strings
-			String rowBuilder = "";
-			for(int rowVal : rows) {
-				rowBuilder += rowVal + " ";
-			}
-			String colBuilder = "";
-			for(int colVal : cols) {
-				colBuilder += colVal + " ";
-			}
-			
-			String valBuilder = "";
-			for(double valVal : values) {
-				valBuilder += valVal + " ";
-			}
-			
-			String labelBuilder = "";
-			for(int lab : docLabels) {
-				labelBuilder += lab + " ";
-			}
-			System.out.println(colBuilder.toString());
-			
-			// Write the train features
-			String newFilePath = groupDir + targetGroup + "TrainFeatures.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			
-			newFilePath = groupDir + targetGroup + "TrainLabels.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			
-			
-			
-			// Now the testing set
-			// Hold the coordinates
-			rows = new ArrayList<Integer>();
-			cols = new ArrayList<Integer>();
-			values = new ArrayList<Double>();
-			docLabels = new ArrayList<Integer>();
-			
-			for(int i = 0; i < testingDocuments.size(); i++) {
-				Document temp = testingDocuments.get(i);
-				docLabels.add((int)temp.getLabel());
-				for(String word : temp.m_VSM.keySet()) {
-					cols.add(m_Vocabs.get(word).getID());
-					rows.add(i);
-					values.add(temp.m_VSM.get(word));
-				}
-			}
-			
-			// Create the necessary strings
-			rowBuilder = "";
-			for(int rowVal : rows) {
-				rowBuilder += rowVal + " ";
-			}
-			colBuilder = "";
-			for(int colVal : cols) {
-				colBuilder += colVal + " ";
-			}
-			
-			valBuilder = "";
-			for(double valVal : values) {
-				valBuilder += valVal + " ";
-			}
-			
-			labelBuilder = "";
-			for(int lab : docLabels) {
-				labelBuilder += lab + " ";
-			}
-			System.out.println(colBuilder.toString());
-			
-			// Write the test features
-			newFilePath = groupDir + targetGroup + "TestFeatures.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			
-			newFilePath = groupDir + targetGroup + "TestLabels.txt";
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream(newFilePath), "utf-8"))) {
-						writer.write(rowBuilder + "\n");
-						writer.write(colBuilder + "\n");
-						writer.write(valBuilder + "\n");		
-		   } catch(IOException e) {
-			   System.out.println(e.getMessage());
-		   }
-			/**
-			 *  Train and save classifier
-			 */
-//			Classifier=BuildClassifier(NumberOfProcessors);
-//			Classifier.saveTopFeatures("topfeatures.csv");
-//			Save(m_Vocabs, "vocab.csv");
-//
-//
-//			// Evaluate
-//			double[] performance=EvaluateClassifier(Classifier);
-//
-//			System.out.println("Group "+targetGroup+", Accuracy: "+performance[0]); 
-//			System.out.println("0 class ("+performance[7]+"/"+performance[8]+"/"+performance[9]+"): Precision="+performance[4]+",Recall="+performance[5]+",F1-Measure="+performance[6]);
-//			System.out.println("1 class ("+performance[10]+"/"+performance[11]+"/"+performance[12]+"): Precision="+performance[1]+",Recall="+performance[2]+",F1-Measure="+performance[3]);
+			// Train and save classifier
+			Classifier=BuildClassifier(NumberOfProcessors);
+			Classifier.saveTopFeatures("topfeatures.csv");
+			Save(m_Vocabs, "vocab.csv");
+
+
+			// Evaluate
+			double[] performance=EvaluateClassifier(Classifier);
+
+			System.out.println("Group "+targetGroup+", Accuracy: "+performance[0]); 
+			System.out.println("0 class ("+performance[7]+"/"+performance[8]+"/"+performance[9]+"): Precision="+performance[4]+",Recall="+performance[5]+",F1-Measure="+performance[6]);
+			System.out.println("1 class ("+performance[10]+"/"+performance[11]+"/"+performance[12]+"): Precision="+performance[1]+",Recall="+performance[2]+",F1-Measure="+performance[3]);
 
 
 		}

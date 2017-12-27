@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/Mohammad/Desktop/d/College/BooksAndSlides/2014/semester 2-9/Text Mining 6501-3/HW1/commons-io-2.5/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Mohammad/Desktop/stanford-corenlp-full-2017-06-09/stanford-corenlp-3.8.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
