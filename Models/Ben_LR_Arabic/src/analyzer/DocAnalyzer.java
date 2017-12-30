@@ -1155,17 +1155,17 @@ public class DocAnalyzer   {
 			/**
 			 *  Train and save classifier
 			 */
-//			Classifier=BuildClassifier(NumberOfProcessors);
-//			Classifier.saveTopFeatures("topfeatures.csv");
-//			Save(m_Vocabs, "vocab.csv");
-//
-//
-//			// Evaluate
-//			double[] performance=EvaluateClassifier(Classifier);
-//
-//			System.out.println("Group "+targetGroup+", Accuracy: "+performance[0]); 
-//			System.out.println("0 class ("+performance[7]+"/"+performance[8]+"/"+performance[9]+"): Precision="+performance[4]+",Recall="+performance[5]+",F1-Measure="+performance[6]);
-//			System.out.println("1 class ("+performance[10]+"/"+performance[11]+"/"+performance[12]+"): Precision="+performance[1]+",Recall="+performance[2]+",F1-Measure="+performance[3]);
+			Classifier=BuildClassifier(NumberOfProcessors);
+			Classifier.saveTopFeatures("topfeatures.csv");
+			Save(m_Vocabs, "vocab.csv");
+
+
+			// Evaluate
+			double[] performance=EvaluateClassifier(Classifier);
+
+			System.out.println("Group "+targetGroup+", Accuracy: "+performance[0]); 
+			System.out.println("0 class ("+performance[7]+"/"+performance[8]+"/"+performance[9]+"): Precision="+performance[4]+",Recall="+performance[5]+",F1-Measure="+performance[6]);
+			System.out.println("1 class ("+performance[10]+"/"+performance[11]+"/"+performance[12]+"): Precision="+performance[1]+",Recall="+performance[2]+",F1-Measure="+performance[3]);
 
 
 		}
