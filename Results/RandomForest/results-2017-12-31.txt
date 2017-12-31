@@ -1,0 +1,20 @@
+Aljazeera, 0.176470588235
+CNN, 0.285714285714
+Mohamed Rateb Al-Nabulsi, 0.0
+Movement of Society for Peace, 0.0416666666667
+Tunisian General Union of Labor, 0.233766233766
+Rabee al-Madkhali, 0.0
+Socialist Union Morocco, 0.0315457413249
+Salman Fahd Al-Ohda, 0.0
+Alarabiya, 0.0152827305145
+GA on Islamic Affairs, 0.0
+Al Shabaab, 1.0
+Ansar Al Sharia, 1.0
+AQIM, 1.0
+Azawad, 1.0
+ISIS, 1.0
+Syrian Democratic Forces, 0.979228486647
+Houthis, 0.942486085343
+Hezbollah, 0.998522895126
+Hamas, 1.0
+Al-Boraq, 0.0139965008748

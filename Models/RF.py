@@ -30,14 +30,14 @@ Results
 
 # Load in the data
 base_dir = "C:/Users/Ben/Documents/Capstone/Models/exported-features/"
-for group in pr.groups:
+for group in ["Movement of Society for Peace"]:
     features, response = pr.readData(group, base_dir)
     print("Train feature shape: " + str(features.shape))
     print("Train label length: " + str(len(response)))
 
     # Make classifier using the best parameters, increase depth
-    rf = RandomForestClassifier(random_state=0, max_depth=8,
-        n_estimators=1000, n_jobs=4)
+    rf = RandomForestClassifier(random_state=0, max_depth=6,
+        n_estimators=2000, n_jobs=3)
     rf.fit(features, response)
     print("Building Classifier")
     rf.fit(features, response)
@@ -48,7 +48,10 @@ for group in pr.groups:
     print("Test label length: " + str(len(test_response)))
     preds = rf.predict(test_features)
 
+    print(preds)
+    print(sum(preds == test_response)/len(preds))
+    print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
-    with open("C:/Users/Ben/Documents/Capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
-        file.write("{0}, ".format(group) + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n")
-        file.close()
+    # with open("C:/Users/Ben/Documents/Capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
+    #    file.write("{0}, ".format(group) + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n")
+    #    file.close()
