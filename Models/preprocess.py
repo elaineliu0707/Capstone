@@ -7,9 +7,6 @@
 import pandas as pd
 import scipy.sparse as sp
 import numpy as np
-import sys
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import f1_score
 
 def readData(groupName, base_dir, train=True, colLen = None):
 
@@ -26,9 +23,9 @@ def readData(groupName, base_dir, train=True, colLen = None):
         vals = np.array([float(x.strip()) for x in Features.readline().strip().split(", ")])
         Features.close()
 
-    
+
     row_len = max(rows) + 1
-    
+
     if colLen:
         col_len = colLen
     else:
@@ -50,3 +47,41 @@ def readData(groupName, base_dir, train=True, colLen = None):
         Labels.close()
 
     return((features, labels))
+
+def evaluateGridSearch(clf, y_test):
+    print("Best parameters set found on development set:")
+    print()
+    print(clf.best_params_)
+    print()
+    print("Grid scores on development set:")
+    print()
+    means = clf.cv_results_['mean_test_score']
+    stds = clf.cv_results_['std_test_score']
+    for mean, std, params in zip(means, stds, clf.cv_results_['params']):
+        print("%0.3f (+/-%0.03f) for %r"
+              % (mean, std * 2, params))
+    print()
+
+# List of group names
+groups = [
+        "Aljazeera",
+        "CNN",
+        "Mohamed Rateb Al-Nabulsi",
+        "Movement of Society for Peace",
+        "Tunisian General Union of Labor",
+        "Rabee al-Madkhali",
+        "Socialist Union Morocco",
+        "Salman Fahd Al-Ohda",
+        "Alarabiya",
+        "GA on Islamic Affairs",
+        "Al Shabaab",
+        "Ansar Al Sharia",
+        "AQIM",
+        "Azawad",
+        "ISIS",
+        "Syrian Democratic Forces",
+        "Houthis",
+        "Hezbollah",
+        "Hamas",
+        "Al-Boraq"
+]
