@@ -2,18 +2,23 @@
 
 import preprocess as pr
 from sklearn.model_selection import StratifiedKFold
-from sklearn.ensemble import RandomForestClassifier
+import xgboost as xgb
 from sklearn.metrics import f1_score
 from sklearn.model_selection import GridSearchCV
 from datetime import date
 
-# Group used: Hamas
+base_dir = "C:/Users/Ben/Documents/Capstone/Models/exported-features/"
+group = "Hamas"
+features, response = pr.readData(group, base_dir)
+print("Train feature shape: " + str(features.shape))
+print("Train label length: " + str(len(response)))
+
 ### Hyperparameter optimization using grid search
-#rf = RandomForestClassifier(random_state=0)
-#params = {'max_depth': [2,4,6], 'n_estimators':[500, 1000, 3000]}
-#clf = GridSearchCV(rf, params)
-#clf.fit(features, response)
-#print(clf.best_params_)
+xg = xgb.XGBClassifier(random_state=0)
+params = {'max_depth': [2,4,6], 'n_estimators':[500, 1000, 3000]}
+clf = GridSearchCV(xg, params, verbose=5)
+clf.fit(features, response)
+print(clf.best_params_)
 """
 Results
 0.867 (+/-0.229) for {'max_depth': 2, 'n_estimators': 500}
@@ -29,8 +34,8 @@ Results
 # From the results, we see that depth is much more important
 # than the number of estimators.
 
-# pr.evaluateGridSearch(clf)
-
+pr.evaluateGridSearch(clf)
+"""
 # Load in the data
 base_dir = "C:/Users/Ben/Documents/Capstone/Models/exported-features/"
 for group in ["Movement of Society for Peace"]:
@@ -57,4 +62,4 @@ for group in ["Movement of Society for Peace"]:
     # Evaluate the results
     # with open("C:/Users/Ben/Documents/Capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
     #    file.write("{0}, ".format(group) + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n")
-    #    file.close()
+    #    file.close()"""
