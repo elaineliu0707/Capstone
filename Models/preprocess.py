@@ -48,7 +48,7 @@ def readData(groupName, base_dir, train=True, colLen = None):
 
     return((features, labels))
 
-def evaluateGridSearch(clf, y_test):
+def evaluateGridSearch(clf):
     print("Best parameters set found on development set:")
     print()
     print(clf.best_params_)
