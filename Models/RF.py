@@ -1,7 +1,6 @@
 # Author: Ben Greenawald
 
 import preprocess as pr
-from sklearn.model_selection import StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import f1_score
 from sklearn.model_selection import GridSearchCV
@@ -32,15 +31,15 @@ Results
 # pr.evaluateGridSearch(clf)
 
 # Load in the data
-base_dir = "C:/Users/Ben/Documents/Capstone/Models/exported-features/"
-for group in ["Movement of Society for Peace"]:
+base_dir = "/home/benji/Capstone/Models/exported-features/"
+for group in pr.groups:
     features, response = pr.readData(group, base_dir)
     print("Train feature shape: " + str(features.shape))
     print("Train label length: " + str(len(response)))
 
     # Make classifier using the best parameters, increase depth
-    rf = RandomForestClassifier(random_state=0, max_depth=6,
-        n_estimators=2000, n_jobs=3)
+    rf = RandomForestClassifier(random_state=0, max_depth=8,
+        n_estimators=3000, n_jobs=3)
     rf.fit(features, response)
     print("Building Classifier")
     rf.fit(features, response)
@@ -55,6 +54,8 @@ for group in ["Movement of Society for Peace"]:
     print(sum(preds == test_response)/len(preds))
     print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
-    # with open("C:/Users/Ben/Documents/Capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
-    #    file.write("{0}, ".format(group) + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n")
-    #    file.close()
+    with open("/home/benji/Capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
+        file.write(group + "\n")
+        file.write("Accurary: " + str(sum(preds == test_response)/len(preds)) + "\n")
+        file.write("F1-Score: " + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n\n")
+        file.close()

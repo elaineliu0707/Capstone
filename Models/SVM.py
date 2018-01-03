@@ -1,7 +1,6 @@
 # Author: Ben Greenawald
 
 import preprocess as pr
-from sklearn.model_selection import StratifiedKFold
 from sklearn.svm import SVC
 from sklearn.metrics import f1_score
 from sklearn.model_selection import GridSearchCV
@@ -46,22 +45,23 @@ for group in pr.groups:
     print("Train label length: " + str(len(response)))
 
     # Make classifier using the best parameters, increase depth
-    rf = RandomForestClassifier(random_state=0, max_depth=6,
-        n_estimators=2000, n_jobs=3)
-    rf.fit(features, response)
+    sv = SVC(random_state=0, kernel='sigmoid', C = 10, verbose=True)
+    sv.fit(features, response)
     print("Building Classifier")
-    rf.fit(features, response)
+    sv.fit(features, response)
 
     # Read in the test data
     test_features, test_response = pr.readData(group, base_dir, train=False, colLen = features.shape[1])
     print("Test feature shape: " + str(test_features.shape))
     print("Test label length: " + str(len(test_response)))
-    preds = rf.predict(test_features)
+    preds = sv.predict(test_features)
 
     print(preds)
     print(sum(preds == test_response)/len(preds))
     print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
     with open("/home/benji/Capstone/Results/SVM/results-{0}.txt".format(str(date.today())), "a+") as file:
-        file.write("{0}, ".format(group) + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n")
-        file.close()"""
+        file.write(group + "\n")
+        file.write("Accurary: " + str(sum(preds == test_response)/len(preds)) + "\n")
+        file.write(str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n\n")
+        file.close()

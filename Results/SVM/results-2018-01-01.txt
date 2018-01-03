@@ -1,0 +1,16 @@
+Aljazeera
+Accurary: 0.387096774194
+0.558139534884
+
+CNN
+Accurary: 0.0416666666667
+0.08
+
+Mohamed Rateb Al-Nabulsi
+Accurary: 0.666666666667
+0.8
+
+Movement of Society for Peace
+Accurary: 0.148936170213
+0.259259259259
+
