@@ -29,11 +29,11 @@ Test RMSE for 3 Fold CV, all with early stopping at 10
 Depth: 5, Learning Rate:1 , NTrees: 10      0.184657
 Depth: 5, Learning Rate:1 , NTrees: 100       0.184657
 Depth: 10, Learning Rate:1 , NTrees: 100       0.196157
-Depth: 10, Learning Rate:0.5 , NTrees: 100      0.153139 
+Depth: 10, Learning Rate:0.5 , NTrees: 100      0.153139
 Depth: 10, Learning Rate:0.1 , NTrees: 100       0.24192
 
 Change early stopping to 25
-Depth: 10, Learning Rate:0.5 , NTrees: 100      0.153139 
+Depth: 10, Learning Rate:0.5 , NTrees: 100      0.153139
 Depth: 10, Learning Rate:0.1 , NTrees: 100       0.24192
 
 Change objective to binary logistic
