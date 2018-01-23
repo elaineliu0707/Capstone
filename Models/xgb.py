@@ -5,6 +5,8 @@ import xgboost as xgb
 from sklearn.metrics import f1_score
 from datetime import date
 import numpy as np
+from imblearn.over_sampling import RandomOverSampler
+from collections import Counter
 
 """
 base_dir = "/home/benji/Capstone/Models/exported-features/"
@@ -47,11 +49,15 @@ Depth: 10, Learning Rate:0.5 , NTrees: 100      0.026114
 # than the number of estimators.
 
 # Load in the data
-base_dir = "/home/benji/Capstone/Models/exported-features/"
+base_dir = "/home/benji/Documents/capstone/Models/exported-features/"
 for group in pr.groups:
     features, response = pr.readData(group, base_dir)
     print("Train feature shape: " + str(features.shape))
     print("Train label length: " + str(len(response)))
+
+    ros = RandomOverSampler(random_state=0)
+    features, response = ros.fit_sample(features, response)
+    print(sorted(Counter(response).items()))
 
     xg_train = xgb.DMatrix(features, label = response)
     params = {'max_depth': 10, 'nthread':2, 'n_estimators':500,
@@ -70,7 +76,7 @@ for group in pr.groups:
     print(sum(preds == test_response)/len(preds))
     print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
-    with open("/home/benji/Capstone/Results/XGBoost/results-{0}.txt".format(str(date.today())), "a+") as file:
+    with open("/home/benji/Documents/capstone/Results/XGBoost/results-{0}.txt".format(str(date.today())), "a+") as file:
         file.write(group + "\n")
         file.write("Accurary: " + str(sum(preds == test_response)/len(preds)) + "\n")
         file.write("F1-Score: " + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n\n")

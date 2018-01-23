@@ -1,0 +1,80 @@
+Aljazeera
+Accurary: 0.3870967741935484
+0.5581395348837209
+
+CNN
+Accurary: 0.041666666666666664
+0.07999999999999999
+
+Mohamed Rateb Al-Nabulsi
+Accurary: 0.6666666666666666
+0.8
+
+Movement of Society for Peace
+Accurary: 0.14893617021276595
+0.25925925925925924
+
+Tunisian General Union of Labor
+Accurary: 0.5294117647058824
+0.6923076923076924
+
+Rabee al-Madkhali
+Accurary: 0.208955223880597
+0.345679012345679
+
+Socialist Union Morocco
+Accurary: 0.2948717948717949
+0.45544554455445546
+
+Salman Fahd Al-Ohda
+Accurary: 0.004524886877828055
+0.00900900900900901
+
+Alarabiya
+Accurary: 0.21072895277207393
+0.3481026075895697
+
+GA on Islamic Affairs
+Accurary: 0.07508992805755396
+0.13969050606440822
+
+Al Shabaab
+Accurary: 1.0
+1.0
+
+Ansar Al Sharia
+Accurary: 1.0
+1.0
+
+AQIM
+Accurary: 1.0
+1.0
+
+Azawad
+Accurary: 1.0
+1.0
+
+ISIS
+Accurary: 1.0
+1.0
+
+Syrian Democratic Forces
+Accurary: 0.8837209302325582
+0.9382716049382717
+
+Houthis
+Accurary: 0.9263157894736842
+0.9617486338797814
+
+Hezbollah
+Accurary: 0.9572271386430679
+0.9781461944235117
+
+Hamas
+Accurary: 0.9995414947271893
+0.9997706947947719
+
+Al-Boraq
+Accurary: 0.11502642839164359
+0.20632054176072234
+

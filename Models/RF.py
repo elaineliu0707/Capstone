@@ -6,6 +6,7 @@ from imblearn.over_sampling import RandomOverSampler
 from sklearn.metrics import f1_score
 from sklearn.model_selection import GridSearchCV
 from datetime import date
+from collections import Counter
 
 # Group used: Hamas
 ### Hyperparameter optimization using grid search
@@ -40,6 +41,8 @@ for group in pr.groups:
 
     ros = RandomOverSampler(random_state=0)
     features, response = ros.fit_sample(features, response)
+    print(sorted(Counter(response).items()))
+
 
     # Make classifier using the best parameters, increase depth
     rf = RandomForestClassifier(random_state=0, max_depth=8,

@@ -5,6 +5,8 @@ from sklearn.svm import SVC
 from sklearn.metrics import f1_score
 from sklearn.model_selection import GridSearchCV
 from datetime import date
+from imblearn.over_sampling import RandomOverSampler
+from collections import Counter
 
 # Find best parameters using Hamas
 """
@@ -38,15 +40,19 @@ pr.evaluateGridSearch(clf)
 # better
 
 # Load in the data
-base_dir = "/home/benji/capstone/Models/exported-features/"
+base_dir = "/home/benji/Documents/capstone/Models/exported-features/"
 for group in pr.groups:
     features, response = pr.readData(group, base_dir)
     print("Train feature shape: " + str(features.shape))
     print("Train label length: " + str(len(response)))
 
+    ros = RandomOverSampler(random_state=0)
+    features, response = ros.fit_sample(features, response)
+    print(sorted(Counter(response).items()))
+
     # Make classifier using the best parameters, increase depth
     sv = SVC(random_state=0, kernel='sigmoid', C = 10, verbose=True)
-    sv.fit(features, response)
+
     print("Building Classifier")
     sv.fit(features, response)
 
@@ -60,7 +66,7 @@ for group in pr.groups:
     print(sum(preds == test_response)/len(preds))
     print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
-    with open("/home/benji/capstone/Results/SVM/results-{0}.txt".format(str(date.today())), "a+") as file:
+    with open("/home/benji/Documents/capstone/Results/SVM/results-{0}.txt".format(str(date.today())), "a+") as file:
         file.write(group + "\n")
         file.write("Accurary: " + str(sum(preds == test_response)/len(preds)) + "\n")
         file.write(str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n\n")

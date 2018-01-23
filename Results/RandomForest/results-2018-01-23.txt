@@ -1,0 +1,80 @@
+Aljazeera
+Accurary: 0.16129032258064516
+F1-Score: 0.27777777777777773
+
+CNN
+Accurary: 0.16666666666666666
+F1-Score: 0.2857142857142857
+
+Mohamed Rateb Al-Nabulsi
+Accurary: 0.0
+F1-Score: 0.0
+
+Movement of Society for Peace
+Accurary: 0.0
+F1-Score: 0.0
+
+Tunisian General Union of Labor
+Accurary: 0.16176470588235295
+F1-Score: 0.27848101265822783
+
+Rabee al-Madkhali
+Accurary: 0.0
+F1-Score: 0.0
+
+Socialist Union Morocco
+Accurary: 0.019230769230769232
+F1-Score: 0.03773584905660378
+
+Salman Fahd Al-Ohda
+Accurary: 0.0
+F1-Score: 0.0
+
+Alarabiya
+Accurary: 0.4455852156057495
+F1-Score: 0.6164772727272727
+
+GA on Islamic Affairs
+Accurary: 0.006294964028776978
+F1-Score: 0.012511170688114387
+
+Al Shabaab
+Accurary: 1.0
+F1-Score: 1.0
+
+Ansar Al Sharia
+Accurary: 1.0
+F1-Score: 1.0
+
+AQIM
+Accurary: 1.0
+F1-Score: 1.0
+
+Azawad
+Accurary: 1.0
+F1-Score: 1.0
+
+ISIS
+Accurary: 1.0
+F1-Score: 1.0
+
+Syrian Democratic Forces
+Accurary: 0.9709302325581395
+F1-Score: 0.9852507374631269
+
+Houthis
+Accurary: 0.9403508771929825
+F1-Score: 0.9692585895117541
+
+Hezbollah
+Accurary: 0.9985250737463127
+F1-Score: 0.9992619926199262
+
+Hamas
+Accurary: 1.0
+F1-Score: 1.0
+
+Al-Boraq
+Accurary: 0.020387616410772715
+F1-Score: 0.03996053280710409
+
