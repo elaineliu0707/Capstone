@@ -38,7 +38,7 @@ pr.evaluateGridSearch(clf)
 # better
 
 # Load in the data
-base_dir = "/home/benji/Capstone/Models/exported-features/"
+base_dir = "/home/benji/capstone/Models/exported-features/"
 for group in pr.groups:
     features, response = pr.readData(group, base_dir)
     print("Train feature shape: " + str(features.shape))
@@ -60,7 +60,7 @@ for group in pr.groups:
     print(sum(preds == test_response)/len(preds))
     print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
-    with open("/home/benji/Capstone/Results/SVM/results-{0}.txt".format(str(date.today())), "a+") as file:
+    with open("/home/benji/capstone/Results/SVM/results-{0}.txt".format(str(date.today())), "a+") as file:
         file.write(group + "\n")
         file.write("Accurary: " + str(sum(preds == test_response)/len(preds)) + "\n")
         file.write(str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n\n")

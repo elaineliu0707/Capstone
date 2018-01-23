@@ -2,6 +2,7 @@
 
 import preprocess as pr
 from sklearn.ensemble import RandomForestClassifier
+from imblearn.over_sampling import RandomOverSampler
 from sklearn.metrics import f1_score
 from sklearn.model_selection import GridSearchCV
 from datetime import date
@@ -31,16 +32,19 @@ Results
 # pr.evaluateGridSearch(clf)
 
 # Load in the data
-base_dir = "/home/benji/Capstone/Models/exported-features/"
+base_dir = "/home/benji/Documents/capstone/Models/exported-features/"
 for group in pr.groups:
     features, response = pr.readData(group, base_dir)
     print("Train feature shape: " + str(features.shape))
     print("Train label length: " + str(len(response)))
 
+    ros = RandomOverSampler(random_state=0)
+    features, response = ros.fit_sample(features, response)
+
     # Make classifier using the best parameters, increase depth
     rf = RandomForestClassifier(random_state=0, max_depth=8,
-        n_estimators=3000, n_jobs=3)
-    rf.fit(features, response)
+        n_estimators=3000, n_jobs=6)
+
     print("Building Classifier")
     rf.fit(features, response)
 
@@ -54,8 +58,11 @@ for group in pr.groups:
     print(sum(preds == test_response)/len(preds))
     print(f1_score(test_response, preds, pos_label=test_response[0]))
     # Evaluate the results
-    with open("/home/benji/Capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
+    with open("/home/benji/Documents/capstone/Results/RandomForest/results-{0}.txt".format(str(date.today())), "a+") as file:
         file.write(group + "\n")
         file.write("Accurary: " + str(sum(preds == test_response)/len(preds)) + "\n")
         file.write("F1-Score: " + str(f1_score(test_response, preds, pos_label=test_response[0])) + "\n\n")
         file.close()
+
+    # Clean up the environment
+    del features, response, test_features, test_response
