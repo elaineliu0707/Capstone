@@ -1,0 +1,300 @@
+group Rabee-al-Madkhali
+accuracy
+0.253731
+pre 0
+1.000000
+rec 0
+0.253731
+f1 0
+0.404762
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group ISIS
+accuracy
+1.000000
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+1.000000
+f1 1
+1.000000
+group Salman-Fahd-Al-Ohda
+accuracy
+0.536953
+pre 0
+1.000000
+rec 0
+0.536953
+f1 0
+0.698724
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Syrian-Democratic-Forces
+accuracy
+0.273256
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+0.273256
+f1 1
+0.429224
+group Mohamed-Rateb-Al-Nabulsi
+accuracy
+0.966667
+pre 0
+1.000000
+rec 0
+0.966667
+f1 0
+0.983051
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Hezbollah
+accuracy
+0.750737
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+0.750737
+f1 1
+0.857624
+group Al-Shabaab
+accuracy
+1.000000
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+1.000000
+f1 1
+1.000000
+group Movement-of-Society-for-Peace
+accuracy
+0.680851
+pre 0
+1.000000
+rec 0
+0.680851
+f1 0
+0.810127
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Tunisian-General-Union-of-Labor
+accuracy
+0.779412
+pre 0
+1.000000
+rec 0
+0.779412
+f1 0
+0.876033
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Azawad
+accuracy
+0.666667
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+0.666667
+f1 1
+0.800000
+group Houthis
+accuracy
+0.771930
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+0.771930
+f1 1
+0.871287
+group Hamas
+accuracy
+0.998166
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+0.998166
+f1 1
+0.999082
+group Ansar-Al-Sharia
+accuracy
+1.000000
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+1.000000
+f1 1
+1.000000
+group CNN
+accuracy
+0.833333
+pre 0
+1.000000
+rec 0
+0.833333
+f1 0
+0.909091
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Alarabiya
+accuracy
+0.145021
+pre 0
+1.000000
+rec 0
+0.145021
+f1 0
+0.253306
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group AQIM
+accuracy
+1.000000
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+1.000000
+f1 1
+1.000000
+group Aljazeera
+accuracy
+0.806452
+pre 0
+1.000000
+rec 0
+0.806452
+f1 0
+0.892857
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Al-Boraq
+accuracy
+0.437453
+pre 0
+0.000000
+rec 0
+0.000000
+f1 0
+0.000000
+pre 1
+1.000000
+rec 1
+0.437453
+f1 1
+0.608650
+group GA-on-Islamic-Affairs
+accuracy
+0.428957
+pre 0
+1.000000
+rec 0
+0.428957
+f1 0
+0.600378
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
+group Socialist-Union-Morocco
+accuracy
+0.724359
+pre 0
+1.000000
+rec 0
+0.724359
+f1 0
+0.840149
+pre 1
+0.000000
+rec 1
+0.000000
+f1 1
+0.000000
